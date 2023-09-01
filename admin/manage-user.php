@@ -4,6 +4,18 @@ include 'partials/header.php'
 
 
 <section class="dashboard">
+    <?php if (isset($_SESSION['add-user-success'])) : ?>
+    <div class="alert__message success container">
+
+        <p>
+            <?= $_SESSION['add-user-success'];
+                unset($_SESSION['add-user-success']);
+                ?>
+        </p>
+
+    </div>
+    <?php endif ?>
+
     <div class="container dashboard__container">
         <button id="show__sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-right-b"></i></button>
         <button id="hide__sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-left-b"></i></button>
@@ -34,7 +46,7 @@ include 'partials/header.php'
                         <h5>Manage-categories</h5>
                     </a>
                 </li>
-                <?php endif?>
+                <?php endif ?>
             </ul>
         </aside>
         <main>
@@ -55,22 +67,6 @@ include 'partials/header.php'
                         <td><a href="edit-user.php" class="btn sm">Edit</a></td>
                         <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
                         <td>Yes</td>
-                    </tr>
-
-                    <tr>
-                        <td>Edwin Baruk</td>
-                        <td>Edwin</td>
-                        <td><a href="edit-user.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
-                    </tr>
-
-                    <tr>
-                        <td>Shalom Kisakye</td>
-                        <td>Shalom</td>
-                        <td><a href="edit-user.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
-                        <td>No</td>
                     </tr>
                 </tbody>
             </table>

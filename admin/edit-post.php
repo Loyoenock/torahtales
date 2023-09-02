@@ -8,10 +8,11 @@ include 'partials/header.php'
         <form action="" enctype="multipart/form-data">
             <input type="text" placeholder="Title">
             <select>
-                <option value="1">Travel</option>
-                <option value="2">Art</option>
-                <option value="3">Travel</option>
-                <option value="4">Sci & tech</option>
+                <option value="1">Torah Study and Commentary</option>
+                <option value="2">
+                    Hebrew Traditions and Rituals</option>
+                <option value="3">Personal Stories and Reflections</option>
+                <option value="4">Ethical and Moral Discussionsy</option>
             </select>
             <textarea rows="10" placeholder="Body"></textarea>
             <div class="form__control inline">

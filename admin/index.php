@@ -17,22 +17,22 @@ include 'partials/header.php'
                     </a>
                 </li>
                 <?php if (isset($_SESSION['user_is_admin'])) : ?>
-                <li><a href="add-user.php"><i class="uil uil-user-plus"></i>
-                        <h5>Add User</h5>
-                    </a>
-                </li>
-                <li><a href="manage-user.php"><i class="uil uil-users-alt"></i>
-                        <h5>Manage User</h5>
-                    </a>
-                </li>
-                <li><a href="add-category.php"><i class="uil uil-edit"></i>
-                        <h5>Add add-category</h5>
-                    </a>
-                </li>
-                <li><a href="manage-categories.php"><i class="uil uil-list-ul"></i>
-                        <h5>Manage-categories</h5>
-                    </a>
-                </li>
+                    <li><a href="add-user.php"><i class="uil uil-user-plus"></i>
+                            <h5>Add User</h5>
+                        </a>
+                    </li>
+                    <li><a href="manage-user.php"><i class="uil uil-users-alt"></i>
+                            <h5>Manage User</h5>
+                        </a>
+                    </li>
+                    <li><a href="add-category.php"><i class="uil uil-edit"></i>
+                            <h5>Add category</h5>
+                        </a>
+                    </li>
+                    <li><a href="manage-categories.php"><i class="uil uil-list-ul"></i>
+                            <h5>Manage-categories</h5>
+                        </a>
+                    </li>
                 <?php endif ?>
             </ul>
         </aside>

@@ -55,7 +55,7 @@
     </div>
 
     <div class="footer__copyright">
-        <small class="footer__copyright">Copyright 2023 &copy; Loyofication</small>
+        <small class="footer__copyright">Copyright 2023 &copy; torahtales</small>
     </div>
 </footer>
 <!---------Js-------->

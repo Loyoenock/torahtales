@@ -18,8 +18,18 @@ if (isset($_GET['id'])) {
             unlink($avatar_path);
         }
     }
-    // Retrive and delete all user thumbnails
-
+    // Retreive and delete all user thumbnails
+    $thumbnails_query = "SELECT thumbnail FROM posts WHERE author_id=$id";
+    $thumbnails_result = mysqli_query($connection, $thumbnails_query);
+    if (mysqli_num_rows($thumbnails_result) > 0) {
+        while ($thumbnail = mysqli_fetch_assoc($thumbnails_result)) {
+            $thumbnail_path = '../images/' . $thumbnail['thumbnail'];
+            // Delete thumbnail if it exists in the images folder
+            if ($thumbnail_path) {
+                unlink($thumbnail_path);
+            }
+        }
+    }
 
 
 

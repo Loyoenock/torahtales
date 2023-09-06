@@ -26,8 +26,7 @@ if (!isset($_SESSION['user-id'])) {
 
     <!---------
         Google fonts Montserrat--------------------------------------------------------->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -41,18 +40,18 @@ if (!isset($_SESSION['user-id'])) {
                 <li><a href="<?= ROOT_URL ?>services.php">Services</a></li>
                 <li><a href="<?= ROOT_URL ?>contact.php">Contact</a></li>
                 <?php if (isset($_SESSION['user-id'])) : ?>
-                <li class="nav__profile">
-                    <div class="avatar">
-                        <img src="<?= ROOT_URL . 'images/' . $avatar['avatar'] ?>">
-                    </div>
-                    <ul>
-                        <li><a href="<?= ROOT_URL ?>admin/index.php">Dashboard</a>
-                        </li>
-                        <li><a href="<?= ROOT_URL ?>logout.php">logout</a></li>
-                    </ul>
-                </li>
+                    <li class="nav__profile">
+                        <div class="avatar">
+                            <img src="<?= ROOT_URL . './images/' . $avatar['avatar'] ?>">
+                        </div>
+                        <ul>
+                            <li><a href="<?= ROOT_URL ?>admin/index.php">Dashboard</a>
+                            </li>
+                            <li><a href="<?= ROOT_URL ?>logout.php">logout</a></li>
+                        </ul>
+                    </li>
                 <?php else : ?>
-                <li><a href="signin.php">Signin</a></li>
+                    <li><a href="signin.php">Signin</a></li>
                 <?php endif ?>
             </ul>
             <button id="open__nav-btn"><i class="uil uil-bars"></i></button>

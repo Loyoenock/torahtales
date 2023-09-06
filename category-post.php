@@ -1,211 +1,85 @@
 <?php
-include 'partials/header.php'
+include 'partials/header.php';
+
+// If id is set, Retreive post
+if (isset($_GET['id'])) {
+    $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+    $query = "SELECT * FROM posts WHERE category_id=$id ORDER BY date_time DESC";
+    $posts = mysqli_query($connection, $query);
+} else {
+    header('location: ' . ROOT_URL . 'blog.php');
+    die();
+}
 ?>
 
 <header class="category__title">
-    <h2>Category Title</h2>
+    <h2>
+        <?php
+        // Retreive post from categories by category post id  
+        $category_id = $id;
+        $category_query = "SELECT * FROM categories WHERE id=$category_id";
+        $category_result = mysqli_query($connection, $category_query);
+        $category = mysqli_fetch_assoc($category_result);
+        echo $category['title']
+        ?>
+    </h2>
 </header>
 
+
+<?php if (mysqli_num_rows($posts) > 0) : ?>
 <section class="posts">
     <div class="container post__container">
+        <?php while ($post = mysqli_fetch_assoc($posts)) : ?>
         <article class="post">
             <div class="post__thumbnail">
-                <img src="/images/blog3.jpg">
+                <img src="./images/<?= $post['thumbnail'] ?>">
             </div>
             <div class="post__info">
-                <a href="" class="category__button">Jewish Traditions and Rituals</a>
+
                 <h3 class="post__title">
-                    <a href="post.php">The Significance of Hanukkah: A Festival of Lights.</a>
+                    <a href="<?= ROOT_URL ?>post.php?id=<?= $post['id'] ?>"><?= $post['title'] ?></a>
                 </h3>
-                <p class="post__body">Explore the rich history and symbolism behind Hanukkah, a festival that celebrates
-                    the triumph of light over darkness.</p>
+                <p class="post__body"><?= substr($post['body'], 0, 150) ?>...</p>
                 <div class="post__author">
+                    <?php
+                        // Retreive authors from the users table
+                        $author_id = $post['author_id'];
+                        $author_query = "SELECT * FROM users WHERE id=$author_id";
+                        $author_result = mysqli_query($connection, $author_query);
+                        $author = mysqli_fetch_assoc($author_result);
+                        ?>
                     <div class="post__author-avatar">
-                        <img src="/images/avatar4.jpg" alt="">
+                        <img src="./images/<?= $author['avatar'] ?>">
                     </div>
                     <div class="post__author-info">
-                        <h5>By: Sarah Cohen</h5>
-                        <small>Date: June 29, 2023</small>
+                        <h5>By: <?= "{$author['firstname']} {$author['lastname']}" ?></h5>
+                        <small><?= date("M d, Y - H:i", strtotime($post['date_time'])) ?></small>
                     </div>
                 </div>
             </div>
         </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog4.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Torah Study and Commentary</a>
-                <h3 class="post__title">
-                    <a href="post.php">Unveiling Genesis: Exploring the Creation Narrative</a>
-                </h3>
-                <p class="post__body">Journey through the opening chapters of Genesis and uncover layers of meaning in
-                    the creation story.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar5.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Rabbi Jacob Cohen</h5>
-                        <small>Date: April 3, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog5.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Jewish Traditions and Rituals</a>
-                <h3 class="post__title">
-                    <a href="post.php">Passover Seder: A Feast of Liberation and Unity.</a>
-                </h3>
-                <p class="post__body">Delve into the rituals and symbolism of the Passover Seder, a time-honored
-                    tradition that retells the story of Exodus.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar6.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: David Levy</h5>
-                        <small>Date: August 14, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog6.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Torah Study and Commentary</a>
-                <h3 class="post__title">
-                    <a href="post.php">Unpacking Exodus: The Journey to Liberation</a>
-                </h3>
-                <p class="post__body">LExamine the Exodus story as a universal tale of liberation, resilience, and the
-                    pursuit of freedom.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar7.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Dr. Rebecca Stein</h5>
-                        <small>Date: May 18, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog7.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Ethical and Moral Discussions</a>
-                <h3 class="post__title">
-                    <a href="post.php">The Ethics of Compassion: Lessons from Jewish Tradition</a>
-                </h3>
-                <p class="post__body">Delve into the teachings of Jewish ethics and discover how compassion lies at the
-                    heart of moral decision-making.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar8.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Rabbi Rachel Stern</h5>
-                        <small>Date: July 15, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog8.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Personal Stories and Reflections</a>
-                <h3 class="post__title">
-                    <a href="post.php">Embracing My Jewish Heritage: A Journey of Rediscovery</a>
-                </h3>
-                <p class="post__body">Join me on a personal journey of reconnecting with my Jewish heritage and the
-                    impact it has had on my identity.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar9.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Sarah Cohen</h5>
-                        <small>Date: December 1, 2022</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog9.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Family and Parenting</a>
-                <h3 class="post__title">
-                    <a href="post.php">Passing Down Traditions: Nurturing Hebrew Identity in Children</a>
-                </h3>
-                <p class="post__body">Discover the joys and challenges of instilling Hebrew traditions and values in the
-                    younger generation.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar10.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Leah Abrams</h5>
-                        <small>Date: January 8, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="/images/blog9.jpg">
-            </div>
-            <div class="post__info">
-                <a href="" class="category__button">Current Events</a>
-                <h3 class="post__title">
-                    <a href="post.php">Navigating Faith Amidst Change: Hebrew Community in a Modern World</a>
-                </h3>
-                <p class="post__body">Explore how the Hebrew community adapts to contemporary challenges and changes
-                    while remaining rooted in faith.</p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="/images/avatar10.jpg" alt="">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Leah Abrams</h5>
-                        <small>Date: January 8, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-
+        <?php endwhile ?>
 
 </section>
+
+<?php else : ?>
+<div class="alert__message error lg">
+    <p> No post found for this category</p>
+</div>
+
+<?php endif              ?>
 <!--========================== End of Post section ==========================-->
-
-
 
 <section class="category__buttons">
     <div class="container category__buttons-container">
-        <a href="" class="category__button">Torah Study and Commentary</a>
-        <a href="" class="category__button">Hebrew Traditions and Rituals</a>
-        <a href="" class="category__button">Personal Stories and Reflections</a>
-        <a href="" class="category__button">Ethical and Moral Discussionsy</a>
-        <a href="" class="category__button">Family and Parenting</a>
-        <a href="" class="category__button">Current Events </a>
+        <?php
+        $all_categories_query = "SELECT * FROM categories";
+        $all_categories = mysqli_query($connection, $all_categories_query);
+        ?>
+        <?php while ($category = mysqli_fetch_assoc($all_categories)) : ?>
+        <a href="<?= ROOT_URL ?>category-post.php?id=<?= $category['id'] ?>"
+            class="category__button"><?= $category['title'] ?></a>
+        <?php endwhile ?>
     </div>
 </section>
 <!--========================== End of Category button ==========================-->

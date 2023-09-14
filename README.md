@@ -1,6 +1,6 @@
 # Torah Tales - Connecting the Hebrew Community
 
-![index page](https://ibb.co/8s9ZTFc)
+![index](https://ibb.co/8s9ZTFc)
 
 ### Introduction
 
@@ -9,6 +9,7 @@ Torah Tales is an inclusive and dynamic online platform dedicated to celebrating
 ## Project Blog Article
 To learn more about the inspiration behind Torah Tales and its journey, check out our blog article: Torah Tales - Connecting the Hebrew Community
 Author: Loyoh Enoch
+
 LinkedIn: [Loyoh Enoch](https://www.linkedin.com/in/loyoenoch/)
 ## Installation
 To run Torah Tales locally on your machine using XAMPP, follow these steps:

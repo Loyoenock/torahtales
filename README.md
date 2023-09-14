@@ -40,8 +40,7 @@ To use Torah Tales, simply visit the [Torah Tales website](#) and explore the di
 Contributing
 We welcome contributions from the community to make Torah Tales even more vibrant. If you're interested in contributing, please follow our Contribution Guidelines to get started.
 
-Related Projects
-Simchat Torah Beit Midrash - [stbm](https://stbm.org/).
-Licensing
-Torah Tales is open-source software released under the MIT License.
+Related Projects - Simchat Torah Beit Midrash - [stbm](https://stbm.org/).
+
+Licensing - Torah Tales is open-source software released under the MIT License.
 

@@ -1,7 +1,7 @@
 <footer>
 
     <div class="footer__copyright">
-        <small class="footer__copyright">Copyright 2023 &copy; torahtales</small>
+        <small class="footer__copyright">&copy; <?php echo date('Y'); ?> Torah Tales. All rights reserved.</small>
     </div>
 </footer>
 <!---------Js-------->
